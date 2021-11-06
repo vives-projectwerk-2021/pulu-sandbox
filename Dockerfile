@@ -8,4 +8,4 @@ RUN chmod +x /bin/pulu
 
 VOLUME [ "/root/.ssh/id_rsa" ]
 
-ENTRYPOINT [ "pulu" ]
+ENTRYPOINT [ "sh", "-c" ]
