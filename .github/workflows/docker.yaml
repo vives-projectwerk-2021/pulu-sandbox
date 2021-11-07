@@ -1,9 +1,6 @@
 name: build sandbox
 
-on:
-  release:
-    types:
-      - created
+on: [push]
 
 jobs:
   build:
@@ -16,16 +13,10 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - uses: docker/metadata-action@v3
-      id: meta
-      with:
-        images: |
-          ghcr.io/vives-projectwerk-2021/pulu-sandbox
-        tags: |
-          type=semver,pattern={{version}}
     - uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        context: ./
+        tags: ghcr.io/vives-projectwerk-2021/pulu-sandbox:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
