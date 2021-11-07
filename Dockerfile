@@ -14,8 +14,6 @@ RUN ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN curl -L https://github.com/vives-projectwerk-2021/pulu-cli/releases/latest/download/pulu-linux -o /bin/pulu
 RUN chmod +x /bin/pulu
 
-VOLUME [ "~/.ssh/id_rsa" ]
-
 COPY ./entrypoint.sh .
 RUN chmod +x entrypoint.sh
 
