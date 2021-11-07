@@ -2,11 +2,12 @@
 echo "Starting Pulu Sandbox..."
 
 wrapdocker > /dev/null 2>&1 &
-sleep 1
+sleep 5
 
 while (! docker version ); do
     echo "Waiting for Docker to launch..."
     sleep 1
+    wrapdocker > /dev/null 2>&1 &
 done
 
 if [ -d "/deployment" ]; then
