@@ -10,6 +10,8 @@ while (! docker version ); do
     wrapdocker > /dev/null 2>&1 &
 done
 
+sleep 5
+
 if [ -d "/deployment" ]; then
     cd deployment
     sh startup.sh | cat
